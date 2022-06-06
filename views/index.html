@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script type="module">
+    import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
+
+    const token =
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY1NDEzNDg3MywibmJmIjoxNjU0MTM0ODczLCJqdGkiOiJHdERsbVA3WEtId0l6dU9lIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.nsh3gpcxYAYD4uRm6h9p5BuS3ihVWYEPfvFEVqEvpNo";
+    const socket = io({
+      extraHeaders: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    socket.on("connect", () => console.log("Connected"));
+
+    socket.on("greeting", console.log);
+
+    window.socket = socket;
+  </script>
+</html>
